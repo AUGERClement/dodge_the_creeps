@@ -17,6 +17,7 @@ public partial class Main : Node
 		GetNode<Timer>("ScoreTimer").Stop();
 
 		GetNode<HUD>("HUD").ShowGameOver();
+		GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
 	}
 
 	public void NewGame()
