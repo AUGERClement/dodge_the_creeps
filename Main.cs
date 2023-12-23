@@ -17,6 +17,8 @@ public partial class Main : Node
 		GetNode<Timer>("ScoreTimer").Stop();
 
 		GetNode<HUD>("HUD").ShowGameOver();
+		GetNode<AudioStreamPlayer>("Music").Stop();
+    	GetNode<AudioStreamPlayer>("DeathSound").Play();
 		GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
 	}
 
@@ -33,6 +35,7 @@ public partial class Main : Node
 		player.Start(startPosition.Position);
 
 		GetNode<Timer>("StartTimer").Start();
+    	GetNode<AudioStreamPlayer>("Music").Play();
 	}
 
 	private void OnScoreTimerTimeout()
